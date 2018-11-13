@@ -1029,5 +1029,6 @@ public class Net extends BasePresenter {
     }
 
     public static void main(String[] args) {
+        System.out.println("jiojo");
     }
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/sj"
+        android:drawablePadding="@dimen/base_dimen"
+        android:text="距"
+        android:textSize="@dimen/base_text_size" />
+
+    <TextView
+        android:id="@+id/tv_draw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMainRed"
+        android:layout_marginLeft="@dimen/s_text_size"
+        android:layout_marginRight="@dimen/s_text_size"
+        android:textSize="@dimen/base_text_size" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="期截止："
+        android:layout_marginRight="@dimen/s_text_size"
+        android:textSize="@dimen/base_text_size" />
+
+    <TextView
+        android:id="@+id/tv_end_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorMainRed"
+        android:textSize="@dimen/base_text_size" />
+</LinearLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/base_dimen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_dimen"
+        android:background="@drawable/shape_et_bk"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_dimen"
+            android:text="玩法"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="@dimen/base_text_size" />
+
+        <TextView
+            android:id="@+id/tv_game_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="@dimen/base_dimen"
+            android:background="@drawable/shape_bk_rect_round"
+            android:drawablePadding="@dimen/base_dimen"
+            android:drawableRight="@drawable/xl"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/big_dimen"
+            android:paddingRight="@dimen/big_dimen"
+            android:textColor="@color/colorTextWhite" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_dimen"
+            android:text="@string/number_of_award"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="@dimen/base_text_size" />
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_dimen"
+            android:background="@drawable/shape_et_bk"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="@string/input_or_scan_code"
+                android:textSize="@dimen/base_text_size" />
+
+            <ImageView
+                android:id="@+id/iv_clear_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/delete_input" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorMainRed"
+            android:drawableLeft="@drawable/chaxun"
+            android:drawablePadding="@dimen/base_dimen"
+            android:paddingLeft="@dimen/base_dimen"
+            android:paddingRight="@dimen/base_dimen"
+            android:text="查询"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/base_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_et_bk"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.65">
+
+            <com.sxmh.wt.lotterysystem.view.Ticket
+                android:id="@+id/ticket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_cash_result"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/big_dimen"
+            android:layout_weight="0.35"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/big_dimen"
+                android:text="中奖信息"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="@dimen/big_text_size" />
+
+            <ListView
+                android:id="@+id/lv_win_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/big_dimen"
+                android:layout_marginRight="@dimen/big_dimen"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="合计："
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="@dimen/big_text_size" />
+
+                <TextView
+                    android:id="@+id/tv_sum_win_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorMainRed"
+                    android:textSize="@dimen/big_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 莫币"
+                    android:textColor="@color/colorTextBlack"
+                    android:textSize="@dimen/big_text_size" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorMainRed"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:text="@string/cash"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

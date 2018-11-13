@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_et_bk"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/danxuan"
+        android:drawablePadding="@dimen/big_dimen"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_margin="@dimen/base_dimen"
+        android:text="选择同号和不同号的组合，奖金80莫币"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/big_dimen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="————    同号    ————"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_similar_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_dimen"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/big_dimen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="————    不同号    ————"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_different_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/base_dimen"
+        android:layout_gravity="center_horizontal"/>
+</LinearLayout>

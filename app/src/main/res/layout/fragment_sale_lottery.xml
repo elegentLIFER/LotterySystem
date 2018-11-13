@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/colorBGWhite"
+    android:baselineAligned="false"
+    android:padding="@dimen/base_dimen"
+    android:weightSum="5">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/base_dimen"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/rg_game_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+
+        <FrameLayout
+            android:id="@+id/fl_fragments"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:id="@+id/bt_sure_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/base_dimen"
+            android:background="@color/colorMainRed"
+            android:paddingLeft="@dimen/big_dimen"
+            android:paddingRight="@dimen/big_dimen"
+            android:text="@string/sure_select_number"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/small_dimen"
+            android:layout_weight="1"
+            android:background="@drawable/shape_et_bk"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scrollview_selected"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:id="@+id/ll_all_ball_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+            </ScrollView>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_select_one_machine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|left"
+                    android:layout_margin="@dimen/base_dimen"
+                    android:background="@color/colorMainRed"
+                    android:drawableLeft="@drawable/jx_icon"
+                    android:drawablePadding="@dimen/base_dimen"
+                    android:padding="@dimen/base_dimen"
+                    android:text="@string/select_one_by_machine"
+                    android:textColor="@color/colorTextWhite" />
+
+                <Button
+                    android:id="@+id/bt_select_five_machine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/base_dimen"
+                    android:background="@color/colorMainRed"
+                    android:drawableLeft="@drawable/jx_icon"
+                    android:drawablePadding="@dimen/base_dimen"
+                    android:padding="@dimen/base_dimen"
+                    android:text="@string/select_five_by_machine"
+                    android:textColor="@color/colorTextWhite" />
+
+                <Button
+                    android:id="@+id/bt_clear_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_margin="@dimen/base_dimen"
+                    android:background="@color/colorMainRed"
+                    android:drawableLeft="@drawable/delete_icon"
+                    android:drawablePadding="@dimen/base_dimen"
+                    android:padding="@dimen/base_dimen"
+                    android:text="@string/clear_list"
+                    android:textColor="@color/colorTextWhite" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/small_dimen"
+            android:background="@drawable/shape_et_bk"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/base_dimen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="投" />
+
+                <com.sxmh.wt.lotterysystem.view.NumSelectViewNew
+                    android:id="@+id/nsv_bet_double"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/base_dimen"
+                    android:layout_marginRight="@dimen/base_dimen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="倍" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/base_dimen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="投" />
+
+                <com.sxmh.wt.lotterysystem.view.NumSelectViewNew
+                    android:id="@+id/nsv_multi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/base_dimen"
+                    android:layout_marginRight="@dimen/base_dimen" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="期" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="@dimen/base_dimen"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="合计:" />
+
+                <TextView
+                    android:id="@+id/tv_note_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="@dimen/small_dimen"
+                    android:layout_marginRight="@dimen/small_dimen"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorMainRed"
+                    android:textSize="@dimen/base_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="注" />
+
+                <TextView
+                    android:id="@+id/tv_bet_double"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small_dimen"
+                    android:layout_marginRight="@dimen/small_dimen"
+                    android:textColor="@color/colorMainRed"
+                    android:textSize="@dimen/base_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="倍" />
+
+                <TextView
+                    android:id="@+id/tv_multiple"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small_dimen"
+                    android:layout_marginRight="@dimen/small_dimen"
+                    android:textColor="@color/colorMainRed"
+                    android:textSize="@dimen/base_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="期     共" />
+
+                <TextView
+                    android:id="@+id/tv_money_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/small_dimen"
+                    android:layout_marginRight="@dimen/small_dimen"
+                    android:textColor="@color/colorMainRed"
+                    android:textSize="@dimen/base_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="莫币" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_bet_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorMainRed"
+                    android:paddingLeft="@dimen/big_dimen"
+                    android:paddingRight="@dimen/big_dimen"
+                    android:textColor="@color/colorTextWhite"
+                    android:text="选期"
+                    android:layout_marginLeft="@dimen/base_dimen"
+                    android:visibility="gone"
+                    android:layout_marginRight="@dimen/base_dimen" />
+
+                <Button
+                    android:id="@+id/bt_print"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/colorMainRed"
+                    android:paddingLeft="@dimen/big_dimen"
+                    android:paddingRight="@dimen/big_dimen"
+                    android:text="@string/print"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

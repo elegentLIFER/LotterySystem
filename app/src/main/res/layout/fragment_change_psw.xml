@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="500dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/colorBGWhite"
+    android:orientation="vertical"
+    android:padding="100dp">
+
+    <EditText
+        android:id="@+id/et_pre_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_et_bk"
+        android:drawableLeft="@drawable/mima_iocn"
+        android:drawablePadding="@dimen/base_dimen"
+        android:hint="@string/input_pre_psw" />
+
+    <EditText
+        android:id="@+id/et_new_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_et_bk"
+        android:drawableLeft="@drawable/mima_iocn"
+        android:drawablePadding="@dimen/base_dimen"
+        android:hint="@string/input_new_psw" />
+
+    <EditText
+        android:id="@+id/et_confirm_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_et_bk"
+        android:drawableLeft="@drawable/mima_iocn"
+        android:drawablePadding="@dimen/base_dimen"
+        android:hint="@string/confirm_new_psw" />
+
+    <Button
+        android:id="@+id/bt_change_psw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@color/colorMainRed"
+        android:text="@string/change_psw"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/base_text_size" />
+</LinearLayout>

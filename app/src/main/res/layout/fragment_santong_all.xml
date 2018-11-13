@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_et_bk">
+
+    <com.sxmh.wt.lotterysystem.view.ReportButton
+        android:id="@+id/rb_all_select"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/big_dimen"
+        android:text="三同号通选（任意一个豹子开出即中40莫币）"
+        android:textColor="@color/colorTextWhite" />
+</FrameLayout>

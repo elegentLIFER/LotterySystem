@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/base_dimen"
+    android:paddingLeft="@dimen/base_dimen"
+    android:paddingRight="@dimen/base_dimen"
+    android:weightSum="4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_system_diagnose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_sys_diagnose"
+            android:gravity="center"
+            android:text="@string/system_diagnose"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_psw_change"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_psw_change"
+            android:gravity="center"
+            android:text="@string/psw_change"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_error_fix"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/gzbx"
+            android:gravity="center"
+            android:text="@string/error_fix"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_system_version"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_system_version"
+            android:gravity="center"
+            android:text="@string/system_verison"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_account_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_account_add"
+            android:gravity="center"
+            android:text="@string/account_add_money"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_buy_history"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_goucai_history"
+            android:gravity="center"
+            android:text="@string/buy_history"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_account_add"
+            android:gravity="center"
+            android:text="中心管理"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="10dp"
+            android:drawableTop="@drawable/sl_tv_system_version"
+            android:gravity="center"
+            android:text="@string/system_verison"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</LinearLayout>

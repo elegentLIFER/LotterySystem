@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#0074c2</color>
+    <!--<color name="colorPrimary">#006EB1</color>-->
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF0000</color>
+
+    <color name="colorMainRed">#FF0000</color>
+    <color name="ColorFrame">#ccc</color>
+
+    <!--文字-->
+    <color name="colorTextWhite">#FEFEFE</color>
+    <color name="colorTextDKGray">#666666</color>
+    <color name="colorTextBlack">#333333</color>
+
+    <!--背景色-->
+    <color name="colorBGWhite">#FFFFFF</color>
+    <color name="colorBGGray">#EEEEEE</color>
+</resources>

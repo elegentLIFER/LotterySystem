@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layer_list_bj_light"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_dimen"
+        android:layout_marginTop="@dimen/big_dimen"
+        android:text="文章标题"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="24sp" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/base_dimen"
+        android:layout_marginRight="@dimen/base_dimen"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/base_dimen"
+        android:gravity="right" />
+
+    <Button
+        android:id="@+id/bt_pre_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/big_dimen"
+        android:layout_marginTop="@dimen/base_dimen"
+        android:background="@color/colorMainRed"
+        android:text="返回"
+        android:textColor="@android:color/white" />
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/base_dimen"
+    android:paddingBottom="@dimen/base_dimen"
+    android:weightSum="6">
+
+    <TextView
+        android:id="@+id/tv_serial_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="@dimen/s_text_size" />
+
+    <TextView
+        android:id="@+id/tv_oprate_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="充值"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="@dimen/s_text_size" />
+
+    <TextView
+        android:id="@+id/tv_sum_money"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorMainRed"
+        android:textSize="@dimen/s_text_size" />
+
+    <TextView
+        android:id="@+id/tv_money_channel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="@dimen/s_text_size" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorTextBlack"
+        android:textSize="@dimen/s_text_size" />
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/s_text_size" />
+</LinearLayout>

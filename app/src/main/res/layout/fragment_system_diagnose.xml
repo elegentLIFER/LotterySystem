@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
+    android:padding="@dimen/base_dimen"
+    android:weightSum="5">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:drawableTop="@drawable/zd"
+            android:gravity="center_horizontal"
+            android:text="@string/diagnose_machine_status"
+            android:textSize="@dimen/base_text_size" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/base_dimen"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/bt_start_diagnose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorMainRed"
+                android:text="@string/start_diagnose"
+                android:layout_marginRight="@dimen/base_dimen"
+                android:paddingLeft="@dimen/base_dimen"
+                android:paddingRight="@dimen/base_dimen"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/base_text_size" />
+
+            <Button
+                android:id="@+id/bt_stop_diagnose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/colorMainRed"
+                android:paddingLeft="@dimen/base_dimen"
+                android:paddingRight="@dimen/base_dimen"
+                android:text="@string/stop_diagnose"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/base_dimen"
+        android:layout_weight="2"
+        android:background="@drawable/shape_et_bk"
+        android:gravity="left"
+        android:orientation="vertical"
+        android:padding="@dimen/base_dimen">
+
+        <LinearLayout
+            android:id="@+id/ll_check_print"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_checking_print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/zzjc" />
+
+            <TextView
+                android:id="@+id/tv_check_print"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:padding="@dimen/base_dimen"
+                android:text="@string/check_printer_connect"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_check_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_checking_net"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/zzjc" />
+
+            <TextView
+                android:id="@+id/tv_check_network"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:padding="@dimen/base_dimen"
+                android:text="@string/check_net_connect"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_check_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_checking_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/zzjc" />
+
+            <TextView
+                android:id="@+id/tv_check_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:padding="@dimen/base_dimen"
+                android:text="@string/checking_system_version"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_check_rest_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_checking_rest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/zzjc" />
+
+            <TextView
+                android:id="@+id/tv_check_rest_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:padding="@dimen/base_dimen"
+                android:text="@string/check_rest_money"
+                android:textSize="@dimen/base_text_size" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/base_dimen"
+            android:background="@drawable/shape_et_bk"
+            android:gravity="center"
+            android:text="@string/log"
+            android:textSize="@dimen/base_text_size" />
+
+        <Button
+            android:id="@+id/bt_send_log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_log"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/base_dimen"
+            android:paddingLeft="@dimen/base_dimen"
+            android:paddingRight="@dimen/base_dimen"
+            android:background="@color/colorMainRed"
+            android:text="@string/send_log"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/base_text_size" />
+
+    </RelativeLayout>
+
+</LinearLayout>

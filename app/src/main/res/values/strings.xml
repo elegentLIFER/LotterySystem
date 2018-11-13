@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">莫桑比克售彩系统</string>
+    <string name="sale_lottery">售彩</string>
+    <string name="cash">兑奖</string>
+    <string name="message">消息</string>
+    <string name="report">报表</string>
+    <string name="config">配置</string>
+    <string name="report_class">班报表</string>
+    <string name="report_day">日报表</string>
+    <string name="report_week">周报表</string>
+    <string name="report_month">月报表</string>
+    <string name="check_version">检查新版本</string>
+    <string name="pre_page">上一页</string>
+    <string name="next_page">下一页</string>
+    <string name="not_read">未读</string>
+    <string name="has_read">已读</string>
+    <string name="login">登录</string>
+    <string name="username">用户名</string>
+    <string name="input_pre_psw">请输入原密码</string>
+    <string name="input_new_psw">输入新密码</string>
+    <string name="confirm_new_psw">确认新密码</string>
+    <string name="change_psw">修改</string>
+    <string name="account_add_money">充值记录</string>
+    <string name="system_diagnose">系统诊断</string>
+    <string name="psw_change">密码修改</string>
+    <string name="buy_history">购彩记录</string>
+    <string name="system_verison">系统版本</string>
+    <string name="error_fix">故障报修</string>
+    <string name="print">打印</string>
+    <string name="operator">操作员：</string>
+    <string name="operator2">操作员</string>
+    <string name="date">日期：</string>
+    <string name="time">时间：</string>
+    <string name="sale">销售</string>
+    <string name="total">总计</string>
+    <string name="subject">科目</string>
+    <string name="amount_of_note">注数</string>
+    <string name="amount_of_money">金额</string>
+    <string name="number_of_award">奖号</string>
+    <string name="input_or_scan_code">手动输入或扫描票券条形码</string>
+    <string name="double_color_ball">双色球</string>
+    <string name="sure_select_number">确认选号</string>
+    <string name="diagnose_machine_status">诊断本机状态</string>
+    <string name="start_diagnose">开始诊断</string>
+    <string name="stop_diagnose">停止诊断</string>
+    <string name="serial_number">流水号</string>
+    <string name="oprate_type">名称</string>
+    <string name="sum_money">金额</string>
+    <string name="money_channel">资金渠道</string>
+    <string name="status">状态</string>
+    <string name="time0">时间</string>
+    <string name="check_printer_connect">检查打印机</string>
+    <string name="check_net_connect">检查网络</string>
+    <string name="check_rest_money">正在检查余额</string>
+    <string name="printer_connect_correct">打印机连接状态正常</string>
+    <string name="network_connect_correct">网络连接状态正常</string>
+    <string name="checking_system_version">正在检测系统版本</string>
+    <string name="log">日志报告</string>
+    <string name="send_log">发送日志</string>
+    <string name="select_one_by_machine">机选1注</string>
+    <string name="select_five_by_machine">机选5注</string>
+    <string name="clear_list">清空列表</string>
+    <string name="agent">业主</string>
+    <string name="clerk">店员</string>
+    <string name="note_not_qualify">投注不符合线下选号</string>
+
+
+    <!--还没用到的-->
+    <string name="str_cann_printer">请先连接打印机</string>
+    <string name="str_printer_conn_normal">打印机连接正常</string>
+    <string name="str_printer_out_of_paper">打印机缺纸</string>
+    <string name="str_printer_open_cover">打印机开盖</string>
+    <string name="str_printer_error">打印机错误</string>
+    <string name="str_state">状态: </string>
+
+    <string name="title_paired_devices">已匹配的设备</string>
+    <string name="title_other_devices">扫描结果</string>
+    <string name="scan">扫描设备</string>
+
+</resources>

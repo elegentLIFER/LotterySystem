@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorTextBlack"
+    android:orientation="vertical"
+    android:padding="@dimen/small_dimen">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="请选择 Printer_0DC2 设备进行连接！"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/big_text_size" />
+
+    <TextView
+        android:id="@+id/tvPairedDevices"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextBlack"
+        android:paddingLeft="5dp"
+        android:text="@string/title_paired_devices"
+        android:textColor="@color/colorTextWhite"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lvPairedDevices"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:stackFromBottom="true" />
+
+    <TextView
+        android:id="@+id/tvNewDevices"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTextBlack"
+        android:paddingLeft="5dp"
+        android:text="@string/title_other_devices"
+        android:textColor="@color/colorBGWhite"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/lvNewDevices"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:layout_weight="2"
+        android:stackFromBottom="true"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btBluetoothScan"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/scan" />
+</LinearLayout>

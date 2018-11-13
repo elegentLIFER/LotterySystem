@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/base_dimen"
+        android:layout_marginTop="@dimen/small_dimen">
+
+        <com.sxmh.wt.lotterysystem.view.RestTimeView
+            android:id="@+id/rest_time_view"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_fixed_type"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:drawablePadding="@dimen/base_dimen"
+            android:background="@drawable/shape_bk_rect_round"
+            android:drawableRight="@drawable/xl"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/big_dimen"
+            android:paddingRight="@dimen/big_dimen"
+            android:textColor="@color/colorTextWhite" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_fragments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="锁定屏幕"
+        android:textSize="@dimen/big_text_size" />
+
+    <EditText
+        android:id="@+id/et_lock_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/shape_et_bk"
+        android:hint="用户名"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/et_lock_psw"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/base_dimen"
+        android:background="@drawable/shape_et_bk"
+        android:hint="请输入锁屏密码" />
+
+    <Button
+        android:id="@+id/bt_unlock"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorMainRed"
+        android:text="解锁"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/base_text_size"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/bt_lock"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorMainRed"
+        android:text="记住密码并锁定屏幕"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/base_text_size" />
+</LinearLayout>

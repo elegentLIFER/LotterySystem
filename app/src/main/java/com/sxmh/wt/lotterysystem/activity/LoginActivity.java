@@ -65,15 +65,16 @@ public class LoginActivity extends BaseActivity {
 
     /**
      * 更新系统时间,需要root
-     * @param time  时间格式为yyyyMMdd.HHmmss
+     *
+     * @param time 时间格式为yyyyMMdd.HHmmss
      */
-    public void updateSysTime(String time){
+    public void updateSysTime(String time) {
         try {
             Process process = Runtime.getRuntime().exec("su");
             //String datetime="20131023.112800"; //测试的设置的时间【时间格式 yyyyMMdd.HHmmss】  可能存在时区问题
             DataOutputStream os = new DataOutputStream(process.getOutputStream());
             os.writeBytes("setprop persist.sys.timezone GMT\n");
-            os.writeBytes("/system/bin/date -s "+time+"\n");
+            os.writeBytes("/system/bin/date -s " + time + "\n");
             os.writeBytes("clock -w\n");
             os.writeBytes("exit\n");
             os.flush();
@@ -154,7 +155,6 @@ public class LoginActivity extends BaseActivity {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             View currentFocus = getCurrentFocus();
-
             if (shouldHideInput(currentFocus, ev)) {
                 hideInput();
             }
@@ -203,35 +203,38 @@ public class LoginActivity extends BaseActivity {
             } else {
                 if (userInfo == null) return;
                 String role = userInfo.getRole();
-                if ("clerk".equals(role)) {
-                } else if ("centralistrator".equals(role)) {
-                    String terminalNumber = getTerminalNumber();
-                    boolean empty = TextUtils.isEmpty(terminalNumber);
-
-                    if (alertDialog == null) {
-                        View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_activite, null);
-                        alertDialog = new AlertDialog.Builder(this)
-                                .setView(inflate)
-                                .create();
-                        TextView tvTitle = inflate.findViewById(R.id.tv_title);
-                        tvTitle.setText(empty ? "请输入激活码" : "请重新输入激活码");
-                        Button activate = inflate.findViewById(R.id.bt_activate);
-                        Button cancel = inflate.findViewById(R.id.bt_cancel);
-                        EditText input = inflate.findViewById(R.id.et_input);
-                        input.setText(empty ? "" : terminalNumber);
-                        activate.setOnClickListener((v) -> {
-                            inputString = input.getText().toString();
-                            net.activationTerminal(getActivationRequest());
-                        });
-                        cancel.setOnClickListener((v -> alertDialog.dismiss()));
-                    }
-                    alertDialog.show();
+                if (UserInfo.ROLE_CLECK.equals(role)) {
+                } else if (UserInfo.ROLE_CENTRALISTRATOR.equals(role)) {
+                    showActivationDialog();
                 }
             }
         } else if (request == Net.REQUEST_ACTIVATION) {
             saveTerminalNumber(inputString);
             alertDialog.dismiss();
         }
+    }
+
+    private void showActivationDialog() {
+        if (alertDialog == null) {
+            String terminalNumber = getTerminalNumber();
+            boolean empty = TextUtils.isEmpty(terminalNumber);
+            View inflate = LayoutInflater.from(this).inflate(R.layout.dialog_activite, null);
+            alertDialog = new AlertDialog.Builder(this)
+                    .setView(inflate)
+                    .create();
+            TextView tvTitle = inflate.findViewById(R.id.tv_title);
+            tvTitle.setText(empty ? "请输入激活码" : "请重新输入激活码");
+            Button activate = inflate.findViewById(R.id.bt_activate);
+            Button cancel = inflate.findViewById(R.id.bt_cancel);
+            EditText input = inflate.findViewById(R.id.et_input);
+            input.setText(empty ? "" : terminalNumber);
+            activate.setOnClickListener((v) -> {
+                inputString = input.getText().toString();
+                net.activationTerminal(getActivationRequest());
+            });
+            cancel.setOnClickListener((v -> alertDialog.dismiss()));
+        }
+        alertDialog.show();
     }
 
     private ActivationRequest getActivationRequest() {

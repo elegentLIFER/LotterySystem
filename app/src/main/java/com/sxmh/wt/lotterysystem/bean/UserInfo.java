@@ -5,6 +5,8 @@ package com.sxmh.wt.lotterysystem.bean;
  */
 
 public class UserInfo {
+    public static final String ROLE_CLECK = "clerk";
+    public static final String ROLE_CENTRALISTRATOR = "centralistrator";
     private String sessionName;
     private String sessionId;
     private String token;

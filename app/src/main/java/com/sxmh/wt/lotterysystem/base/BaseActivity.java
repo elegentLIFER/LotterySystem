@@ -67,7 +67,8 @@ public abstract class BaseActivity extends AppCompatActivity implements IView {
             progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
             progressDialog.setCancelable(false);
         }
-        progressDialog.show();
+        if (!progressDialog.isShowing())
+            progressDialog.show();
     }
 
     public void cancelLoading() {

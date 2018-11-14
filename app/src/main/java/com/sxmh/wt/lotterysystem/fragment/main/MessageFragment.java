@@ -65,7 +65,6 @@ public class MessageFragment extends BaseFragment implements SwipeRefreshLayout.
 
         messageContentFragment = new MessageContentFragment();
 
-
         readOrNotView.setOnReadStatusChanged(this);
 
         beanList = new ArrayList<>();
@@ -99,7 +98,11 @@ public class MessageFragment extends BaseFragment implements SwipeRefreshLayout.
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_pre_page:
-                if (currentPage > 1) currentPage--;
+                if (currentPage == 1) {
+                    ToastUtil.newToast(getContext(), "已经第一页了");
+                    return;
+                }
+                currentPage--;
                 break;
             case R.id.bt_next_page:
                 currentPage++;
@@ -115,17 +118,18 @@ public class MessageFragment extends BaseFragment implements SwipeRefreshLayout.
             MessageListResponse response = (MessageListResponse) content;
             List<MessageListResponse.NewsListBean.ListBean> list = response.getNewsList().getList();
 
-            beanList.clear();
-            this.beanList.addAll(list);
-            adapter.notifyDataSetChanged();
-            if (beanList.size() == 0)
+            if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+            if (list.size() == 0 && currentPage != 1) {
                 ToastUtil.newToast(getContext(), "已经最后一页了");
+                return;
+            }
+            beanList.clear();
+            beanList.addAll(list);
+            adapter.notifyDataSetChanged();
 
             if (!hasRead)
-                readOrNotView.setHasNewMsg(beanList.size() == 0 ? false : true);
+                readOrNotView.setHasNewMsg(beanList.size() != 0);
         }
-
-        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override

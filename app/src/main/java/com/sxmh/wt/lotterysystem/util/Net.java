@@ -877,7 +877,7 @@ public class Net extends BasePresenter {
     }
 
     public void historyBettingQuery(BetHistoryRequest betHistoryRequest) {
-        iView.get().showLoading();
+//        iView.get().showLoading();
         Call<BetHistoryResponse> call = getApiService(BaseUrl.SONG).historyBettingQuery(betHistoryRequest);
         call.enqueue(new Callback<BetHistoryResponse>() {
             @Override

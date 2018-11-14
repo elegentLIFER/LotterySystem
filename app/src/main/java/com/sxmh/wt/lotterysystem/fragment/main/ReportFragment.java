@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.gprinter.command.EscCommand;
 import com.sxmh.wt.lotterysystem.R;
+import com.sxmh.wt.lotterysystem.activity.MainActivity;
 import com.sxmh.wt.lotterysystem.base.BaseFragment;
 import com.sxmh.wt.lotterysystem.bean.InterfaceCode;
 import com.sxmh.wt.lotterysystem.bean.UserInfo;
@@ -85,22 +86,6 @@ public class ReportFragment extends BaseFragment {
 
     private int reportType = REPORT_CLASS;
 
-    private PrinterService.PrinterBinder printerBinder;
-
-    private ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            printerBinder = (PrinterService.PrinterBinder) service;
-            printerBinder.setConnectByBlueTooth(false);
-            printerBinder.connect();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            printerBinder = null;
-        }
-    };
-
     @Override
     protected int initLayoutId() {
         return R.layout.fragment_report;
@@ -109,9 +94,6 @@ public class ReportFragment extends BaseFragment {
     @Override
     protected void initData() {
         net.getReport(getReportRequest());
-
-        Intent intent = new Intent(getContext(), PrinterService.class);
-        getContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     private ReportRequest getReportRequest() {
@@ -169,14 +151,14 @@ public class ReportFragment extends BaseFragment {
                 net.getReport(getReportRequest());
                 break;
             case R.id.bt_print:
-//                net.printerNotice(getPrinterNoticeRequest());
-                if (printerBinder.isDeviceConnected()) {
-                    printerBinder.print(print().getCommand());
+                PrinterService.PrinterBinder binder = ((MainActivity) getActivity()).printerBinder;
+                if (binder.isDeviceConnected()) {
+                    binder.print(print().getCommand());
                     return;
                 }
                 new AlertDialog.Builder(getContext())
                         .setTitle("连接打印机？")
-                        .setPositiveButton("连接", (dialog, which) -> printerBinder.connect())
+                        .setPositiveButton("连接", (dialog, which) -> binder.connect())
                         .setNegativeButton("取消", null).create().show();
                 break;
             default:
@@ -191,9 +173,6 @@ public class ReportFragment extends BaseFragment {
         esc.addSelectJustification(EscCommand.JUSTIFICATION.CENTER);
         esc.addSelectPrintModes(EscCommand.FONT.FONTA, EscCommand.ENABLE.OFF, EscCommand.ENABLE.ON, EscCommand.ENABLE.ON, EscCommand.ENABLE.OFF);
 
-//        Bitmap viewBitmap = NUtil.createViewBitmap(llReport);
-//        esc.addRastBitImage(viewBitmap, 550, 0);
-//        image.setImageBitmap(viewBitmap);
         esc.addText(tvReportType.getText().toString() + "\n");
         esc.addSelectPrintModes(EscCommand.FONT.FONTA, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF, EscCommand.ENABLE.OFF);
         esc.addPrintAndLineFeed();
@@ -217,23 +196,6 @@ public class ReportFragment extends BaseFragment {
         return esc;
     }
 
-    private PrinterNoticeRequest getPrinterNoticeRequest() {
-        PrinterNoticeRequest request = new PrinterNoticeRequest();
-        request.setAccountId(UserInfo.getInstance().getUid());
-        request.setSign("6D9B00C2F6CD4EB0921527432A632031");
-        request.setInterfaceCode(InterfaceCode.PRINTER_NOTICE);
-        request.setRequestTime(TimeUtil.get10IntTimeStamp());
-        PrinterNoticeRequest.DataBean.InitPrinterNoticePayReqBean reqBean = new PrinterNoticeRequest.DataBean.InitPrinterNoticePayReqBean();
-        reqBean.setOrderCode("20180419152500485928");
-        PrinterNoticeRequest.DataBean dataBean = new PrinterNoticeRequest.DataBean();
-        dataBean.setInitPrinterNoticePayReq(reqBean);
-        request.setData(dataBean);
-        return request;
-    }
-
-    /**
-     * 切换不同表类型后更新状态和数据
-     */
     private void refreshState() {
         switch (reportType) {
             case REPORT_CLASS:

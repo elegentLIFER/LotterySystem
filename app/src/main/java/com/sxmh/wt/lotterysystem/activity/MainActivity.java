@@ -2,12 +2,15 @@ package com.sxmh.wt.lotterysystem.activity;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -52,6 +55,7 @@ import com.sxmh.wt.lotterysystem.mqtt.MqttListener;
 import com.sxmh.wt.lotterysystem.util.Constants;
 import com.sxmh.wt.lotterysystem.util.NUtil;
 import com.sxmh.wt.lotterysystem.util.Net;
+import com.sxmh.wt.lotterysystem.util.PrinterService;
 import com.sxmh.wt.lotterysystem.util.TimeManager;
 import com.sxmh.wt.lotterysystem.util.TimeUtil;
 import com.sxmh.wt.lotterysystem.util.ToastUtil;
@@ -153,6 +157,23 @@ public class MainActivity extends BaseActivity {
         }
     };
 
+    public PrinterService.PrinterBinder printerBinder;
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            printerBinder = (PrinterService.PrinterBinder) service;
+            printerBinder.setConnectByBlueTooth(false);
+            printerBinder.connect();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            printerBinder = null;
+            Log.e(TAG, "dd: ");
+        }
+    };
+
     @Override
     protected int initLayoutId() {
         return R.layout.activity_main;
@@ -174,6 +195,9 @@ public class MainActivity extends BaseActivity {
 
         checkPermission();
         requestPermission();
+
+        Intent intent = new Intent(this, PrinterService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     private void checkPermission() {
@@ -461,6 +485,12 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         Log.e(TAG, "onKeyDown: " + keyCode + "  " + event);
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unbindService(connection);
     }
 }
 

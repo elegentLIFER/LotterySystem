@@ -1,13 +1,17 @@
 package com.sxmh.wt.lotterysystem.fragment.main;
 
 import android.content.DialogInterface;
+import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.ListPopupWindow;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -26,13 +30,13 @@ import com.sxmh.wt.lotterysystem.bean.response.BetHistoryResponse;
 import com.sxmh.wt.lotterysystem.bean.response.FindRuleResponse;
 import com.sxmh.wt.lotterysystem.bean.response.GameListQueryResponse;
 import com.sxmh.wt.lotterysystem.util.Net;
-import com.sxmh.wt.lotterysystem.util.TimeManager;
 import com.sxmh.wt.lotterysystem.util.TimeUtil;
-import com.sxmh.wt.lotterysystem.util.ToastUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -40,11 +44,14 @@ import butterknife.OnClick;
  * Created by Wang Tao on 2018/4/10 0010.
  */
 
-public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnItemClickListener, RvBetHistoryAdapter.OnRefundTicketClickListener {
+public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnItemClickListener,
+        RvBetHistoryAdapter.OnRefundTicketClickListener, SwipeRefreshLayout.OnRefreshListener {
     @InjectView(R.id.rv_buy_history)
     RecyclerView rvBuyHistory;
     @InjectView(R.id.tv_game_type)
     TextView tvGameType;
+    @InjectView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private List<BetHistoryResponse.BettingListBean> beanList;
     private RvBetHistoryAdapter adapter;
@@ -73,6 +80,9 @@ public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnIt
         rvBuyHistory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rvBuyHistory.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
         rvBuyHistory.setAdapter(adapter);
+
+        swipeRefreshLayout.setColorSchemeColors(getContext().getResources().getColor(R.color.colorMainRed));
+        swipeRefreshLayout.setOnRefreshListener(this);
     }
 
     private GameListQueryRequest getQueryGameListRequest() {
@@ -91,15 +101,14 @@ public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnIt
         return gameListQueryRequest;
     }
 
-    private BetHistoryRequest getBetHistoryRequest(int position) {
+    private BetHistoryRequest getBetHistoryRequest() {
         BetHistoryRequest request = new BetHistoryRequest();
         request.setAccountName(UserInfo.getInstance().getName());
         request.setInterfaceCode(InterfaceCode.HISTORY_BETTING_QUERY);
         request.setRequestTime(TimeUtil.get10IntTimeStamp());
         BetHistoryRequest.DataBean data = new BetHistoryRequest.DataBean();
         BetHistoryRequest.DataBean.BettingInfoBean bettingInfo = new BetHistoryRequest.DataBean.BettingInfoBean();
-        GameListQueryResponse.GameListBean gameListBean = gameList.get(position);
-        bettingInfo.setGameAlias(gameListBean.getAlias());
+        bettingInfo.setGameAlias(currentGame.getAlias());
         data.setBettingInfo(bettingInfo);
         request.setData(data);
         return request;
@@ -111,16 +120,20 @@ public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnIt
             GameListQueryResponse response = (GameListQueryResponse) content;
             gameList.clear();
             gameList.addAll(response.getGameList());
-            net.historyBettingQuery(getBetHistoryRequest(0));
+            currentGame = gameList.get(0);
+            net.historyBettingQuery(getBetHistoryRequest());
             tvGameType.setText(gameList.get(0).getGameName());
             currentGame = gameList.get(0);
             net.findRule(getFindRuleRequest());
         } else if (request == Net.REQUEST_BET_HISTORY) {
+            swipeRefreshLayout.setRefreshing(false);
             BetHistoryResponse response = (BetHistoryResponse) content;
             beanList.clear();
             beanList.addAll(response.getBettingList());
+            Collections.sort(beanList, (o1, o2) -> (int) (o2.getBuyTime() - o1.getBuyTime()));
             adapter.notifyDataSetChanged();
         } else if (request == Net.REQUEST_FIND_RULE) {
+            swipeRefreshLayout.setRefreshing(false);
             FindRuleResponse response = (FindRuleResponse) content;
             gameRule.setData(response.getRuleList());
             adapter.setRefundDuration(gameRule.getR008());
@@ -157,12 +170,12 @@ public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        net.historyBettingQuery(getBetHistoryRequest(position));
-        net.findRule(getFindRuleRequest());
         if (modeSelectPopWin.isShowing()) modeSelectPopWin.dismiss();
-        GameListQueryResponse.GameListBean bean = gameList.get(position);
-        currentGame = bean;
-        tvGameType.setText(bean.getGameName());
+
+        currentGame = gameList.get(position);
+        tvGameType.setText(currentGame.getGameName());
+        net.historyBettingQuery(getBetHistoryRequest());
+        net.findRule(getFindRuleRequest());
     }
 
     private FindRuleRequest getFindRuleRequest() {
@@ -203,5 +216,10 @@ public class BuyHistoryFragment extends BaseFragment implements AdapterView.OnIt
         data.setOrderInfo(orderInfo);
         request.setData(data);
         return request;
+    }
+
+    @Override
+    public void onRefresh() {
+        net.historyBettingQuery(getBetHistoryRequest());
     }
 }

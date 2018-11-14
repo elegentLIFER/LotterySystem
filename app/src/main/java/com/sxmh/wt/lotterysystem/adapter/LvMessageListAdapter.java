@@ -58,11 +58,13 @@ public class LvMessageListAdapter extends BaseAdapter {
         }
         MessageListResponse.NewsListBean.ListBean bean = messageList.get(position);
         viewHolder.tvMessageContent.setText(bean.getName());
+
         int priority = bean.getPriority();
-        int resId = android.R.color.transparent;
+        int resId;
         if (priority == 1) resId = R.drawable.rank1;
         else if (priority == 2) resId = R.drawable.rank2;
         else if (priority == 3) resId = R.drawable.rank3;
+        else resId = android.R.color.transparent;
         viewHolder.ivPriority.setImageResource(resId);
         return convertView;
     }

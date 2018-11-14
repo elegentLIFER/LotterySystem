@@ -1,26 +1,19 @@
 package com.sxmh.wt.lotterysystem.fragment.main;
 
 import android.app.AlertDialog;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.sxmh.wt.lotterysystem.R;
+import com.sxmh.wt.lotterysystem.activity.MainActivity;
 import com.sxmh.wt.lotterysystem.base.BaseFragment;
 import com.sxmh.wt.lotterysystem.bean.ClearSelectedListCallback;
 import com.sxmh.wt.lotterysystem.bean.GameRule;
@@ -37,9 +30,9 @@ import com.sxmh.wt.lotterysystem.fragment.salelottery.Arrange5Fragment;
 import com.sxmh.wt.lotterysystem.fragment.salelottery.DoubleBallFragment;
 import com.sxmh.wt.lotterysystem.fragment.salelottery.Fast3Fragment;
 import com.sxmh.wt.lotterysystem.fragment.salelottery.Happy8Fragment;
+import com.sxmh.wt.lotterysystem.fragment.salelottery.PlaceHolderFragment;
 import com.sxmh.wt.lotterysystem.fragment.salelottery._36$7Fragment;
 import com.sxmh.wt.lotterysystem.util.Net;
-import com.sxmh.wt.lotterysystem.util.PrinterService;
 import com.sxmh.wt.lotterysystem.util.TimeUtil;
 import com.sxmh.wt.lotterysystem.util.ToastUtil;
 import com.sxmh.wt.lotterysystem.view.MyRadioButton;
@@ -88,30 +81,15 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
     private int totalMoney;
 
     private FragmentManager fragmentManager;
+    private PlaceHolderFragment placeHolderFragment;
     private DoubleBallFragment doubleBallFragment;
     private Fast3Fragment fast3Fragment;
     private Happy8Fragment happy8Fragment;
     private Arrange5Fragment arrange5Fragment;
     private _36$7Fragment _36$7Fragment;
-    private PrinterService.PrinterBinder printerBinder;
 
     private GameListQueryResponse.GameListBean currentGameListBean;
     private GameRule gameRule;
-
-    private ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            printerBinder = (PrinterService.PrinterBinder) service;
-            printerBinder.setConnectByBlueTooth(false);
-            printerBinder.connect();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            printerBinder = null;
-            Log.e(TAG, "dd: ");
-        }
-    };
 
     @Override
     protected int initLayoutId() {
@@ -125,11 +103,11 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
 
         fragmentManager = getChildFragmentManager();
         initFragment();
+        showFragment(placeHolderFragment);
+
         nsvMulti.setSelectListener(() -> refreshSumNum());
         nsvBetDouble.setSelectListener(() -> refreshSumNum());
 
-        Intent intent = new Intent(getContext(), PrinterService.class);
-        getContext().bindService(intent, connection, Context.BIND_AUTO_CREATE);
         gameRule = new GameRule();
     }
 
@@ -147,6 +125,7 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
     }
 
     private void initFragment() {
+        placeHolderFragment = new PlaceHolderFragment();
         doubleBallFragment = new DoubleBallFragment();
         doubleBallFragment.setOnCommitSuccessListener(this);
         fast3Fragment = new Fast3Fragment();
@@ -169,6 +148,7 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
         transaction.hide(happy8Fragment);
         transaction.hide(arrange5Fragment);
         transaction.hide(_36$7Fragment);
+        transaction.hide(placeHolderFragment);
         if (!fragment.isAdded()) {
             transaction.add(R.id.fl_fragments, fragment);
         }
@@ -297,7 +277,7 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
             ToastUtil.newToast(getContext(), "您还没有选择号码");
             return;
         }
-        if (printerBinder.isDeviceConnected()) {
+        if (((MainActivity) getActivity()).printerBinder.isDeviceConnected()) {
             new AlertDialog.Builder(getContext())
                     .setTitle("确定此投注?")
                     .setPositiveButton("确定", (dialog, which) -> {
@@ -331,7 +311,7 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
         }
         new AlertDialog.Builder(getContext())
                 .setTitle("连接打印机？")
-                .setPositiveButton("连接", (dialog, which) -> printerBinder.connect())
+                .setPositiveButton("连接", (dialog, which) -> ((MainActivity) getActivity()).printerBinder.connect())
                 .setNegativeButton("取消", null)
                 .create()
                 .show();
@@ -413,14 +393,8 @@ public class SaleLotteryFragment extends BaseFragment implements SelectedBallInf
 
     @Override
     public void OnCommitSuccess() {
-//        printerBinder.print(strategy.print().getCommand());
+        ((MainActivity) getActivity()).printerBinder.print(strategy.print().getCommand());
         clearSelectedList();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getContext().unbindService(connection);
     }
 
     @Override

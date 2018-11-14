@@ -1,6 +1,5 @@
 package com.sxmh.wt.lotterysystem.fragment.salelottery.base;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,10 +17,7 @@ import com.sxmh.wt.lotterysystem.bean.InterfaceCode;
 import com.sxmh.wt.lotterysystem.bean.OnCommitSuccessListener;
 import com.sxmh.wt.lotterysystem.bean.Strategy;
 import com.sxmh.wt.lotterysystem.bean.UserInfo;
-import com.sxmh.wt.lotterysystem.bean.request.FindRuleRequest;
 import com.sxmh.wt.lotterysystem.bean.request.NotOpenQueryRequest;
-import com.sxmh.wt.lotterysystem.bean.response.BetHistoryResponse;
-import com.sxmh.wt.lotterysystem.bean.response.FindRuleResponse;
 import com.sxmh.wt.lotterysystem.bean.response.GameListQueryResponse;
 import com.sxmh.wt.lotterysystem.bean.response.NotOpenQueryResponse;
 import com.sxmh.wt.lotterysystem.fragment.main.SaleLotteryFragment;
@@ -30,7 +26,6 @@ import com.sxmh.wt.lotterysystem.util.Net;
 import com.sxmh.wt.lotterysystem.util.TimeManager;
 import com.sxmh.wt.lotterysystem.util.TimeUtil;
 
-import java.io.Serializable;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;

@@ -198,7 +198,7 @@ public class LoginActivity extends BaseActivity {
             LoginResponse.UserInfoBeanX userInfo = response.getUserInfo();
 
             if (Constants.CODE_SUCCESS.equals(code)) {
-                loginSuccess();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 saveUserInfo(userInfo);
             } else {
                 if (userInfo == null) return;
@@ -230,7 +230,7 @@ public class LoginActivity extends BaseActivity {
             }
         } else if (request == Net.REQUEST_ACTIVATION) {
             saveTerminalNumber(inputString);
-            if (alertDialog.isShowing()) alertDialog.dismiss();
+            alertDialog.dismiss();
         }
     }
 
@@ -248,11 +248,6 @@ public class LoginActivity extends BaseActivity {
         dataBean.setTerminalInfo(terminalInfo);
         activationRequest.setData(dataBean);
         return activationRequest;
-    }
-
-    private void loginSuccess() {
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-        ToastUtil.newToast(getApplicationContext(), "登录成功");
     }
 
     private void saveTerminalNumber(String number) {
